@@ -1,9 +1,9 @@
 import itchat
 import requests
 import json
-key = '1c6de438a1544bff9fa8e27292442292'
+#这个替换成自己的图灵机器人apikey
+key = '1********************'
 def liaotian(text):
-    info=text
     url = 'http://www.tuling123.com/openapi/api?key=' + key + '&info=' + text
     res = requests.get(url)
     res.encoding = 'utf-8'
@@ -12,7 +12,7 @@ def liaotian(text):
 @itchat.msg_register(itchat.content.TEXT)
 def text_reply(msg):
     messeg=liaotian(msg['Text'])
-    sec=itchat.send_msg('［来自李尚楸的机器人］：'+messeg,msg['FromUserName'])
+    sec=itchat.send_msg('［来自机器人］：'+messeg,msg['FromUserName'])
     if sec['BaseResponse']['Ret']!=1204:
         print('from:'+msg['User']['RemarkName'])
         print('sended:'+messeg)
